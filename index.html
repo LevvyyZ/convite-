@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #686868;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* Estilos do botão */
+        .btn-abrir {
+            position: absolute;
+            z-index: 1;
+            padding: 20px 40px;
+            font-size: 24px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, opacity 0.5s ease;
+        }
+
+        .btn-abrir:hover {
+            background-color: #16c01e;
+        }
+
+        /* Estilos da imagem de convite */
+        .convite {
+            position: absolute;
+            width: 80vw;
+            max-width: 30%;
+            height: auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0); /* Começa invisível e pequena */
+            transition: transform 0.8s ease-in-out; /* Transição suave ao abrir */
+            opacity: 0; /* Começa invisível */
+        }
+
+        .mostrar-convite {
+            transform: translate(-50%, -50%) scale(1); /* Escala para o tamanho real */
+            opacity: 1; /* Torna o convite visível */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Botão que abrirá o convite -->
+        <button id="botaoAbrir" class="btn-abrir">Abrir Convite</button>
+        
+        <!-- Imagem do convite -->
+        <img src="imagem/convite-site1.png" alt="Convite" class="convite" id="convite">
+    </div>
+
+    <script>
+        // Referências aos elementos
+        var botao = document.getElementById('botaoAbrir');
+        var convite = document.getElementById('convite');
+
+        // Função para abrir o convite ao clicar no botão
+        botao.addEventListener('click', function() {
+            convite.classList.add('mostrar-convite'); // Adiciona a classe para abrir o convite
+            botao.style.opacity = '0'; // Faz o botão desaparecer
+            setTimeout(function() {
+                botao.style.display = 'none'; // Remove o botão da tela
+            }, 800); // Espera a animação terminar antes de remover o botão
+        });
+    </script>
+</body>
+</html>
